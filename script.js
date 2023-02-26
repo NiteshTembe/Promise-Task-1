@@ -44,7 +44,7 @@ function showFishData(data){
                 <div class="card-body text-bg-info">
                     <div class="card-text">
                         <h2 class="fs-5">Image Link : <a href="${element["Species Illustration Photo"].src}" target="_blank" rel="noopener noreferrer">${element["Species Illustration Photo"].alt}</a></h2>
-                        <h3 class="fs-5">Location : ${element.Quote}</h3>
+                        <h3 class="fs-5">Location : ${element.Location}</h3>
                         <h3 class="fs-5">Biology : ${element.Biology}</h3>
                         <h3 class="fs-5">Description : ${element["Physical Description"]}</h3>
                         
