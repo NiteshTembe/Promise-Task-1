@@ -5,9 +5,7 @@ document.title="Promise Task 1"
 const fetchPromise = fetch("https://www.fishwatch.gov/api/species")
 fetchPromise.then(response=>{
    return response.json()
-}).then(data=>showFishData(data))
-.catch(err=>console.log(err))
-
+}).then(responsedata=>{
 
 // h1 tag with text "Fish Species created" 
 const title= document.createElement("h1")
@@ -23,10 +21,9 @@ const rowdiv = document.createElement("div")
 rowdiv.classList.add("row")
 
 
-//thisfunction is used to show data using bootstrap card in document
-function showFishData(data){
- //   console.log(data)
-    data.map((element)=>{  //to map each data of array
+//to show data using bootstrap card in document
+
+responsedata.map((element)=>{  //to map each data of array
         // each data of aaray data is added inhtml document 
         rowdiv.innerHTML+=`
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-4">
@@ -47,7 +44,9 @@ function showFishData(data){
             </div>
             </div>`
     })
-    
-}
+
 container.appendChild(rowdiv)
 document.body.appendChild(container)
+
+})
+.catch(err=>console.log(err))
