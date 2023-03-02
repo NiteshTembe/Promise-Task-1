@@ -21,19 +21,14 @@ const container = document.createElement("div")
 container.classList.add("container")
 const rowdiv = document.createElement("div")
 rowdiv.classList.add("row")
-rowdiv.id="fishdatadiv"
-container.appendChild(rowdiv)
-document.body.appendChild(container)
-// function is called here to fetch data
 
 
 //thisfunction is used to show data using bootstrap card in document
 function showFishData(data){
-    let fishdatadiv = document.getElementById("fishdatadiv")
  //   console.log(data)
     data.map((element)=>{  //to map each data of array
         // each data of aaray data is added inhtml document 
-        fishdatadiv.innerHTML+=`
+        rowdiv.innerHTML+=`
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-4">
             <div class="card h-100">
                 <div class="card-header d-inline-flex align-items-center justify-content-center text-bg-dark">
@@ -52,4 +47,7 @@ function showFishData(data){
             </div>
             </div>`
     })
+    
 }
+container.appendChild(rowdiv)
+document.body.appendChild(container)
