@@ -1,16 +1,14 @@
 // title for head tag
 document.title="Promise Task 1"
-// function to fetch all fish data using givrn api
-async function getFishData(){
-    try{
-        let res = await fetch("https://www.fishwatch.gov/api/species")
-        let data = await res.json()
-        showFishData(data)
-    }
-    catch(err){
-        console.log(err)
-    }
-}
+// function to fetch all fish data using given api
+
+const fetchPromise = fetch("https://www.fishwatch.gov/api/species")
+fetchPromise.then(response=>{
+   return response.json()
+}).then(data=>showFishData(data))
+.catch(err=>console.log(err))
+
+
 // h1 tag with text "Fish Species created" 
 const title= document.createElement("h1")
 title.classList.add("text-center")
@@ -27,7 +25,7 @@ rowdiv.id="fishdatadiv"
 container.appendChild(rowdiv)
 document.body.appendChild(container)
 // function is called here to fetch data
-getFishData()
+
 
 //thisfunction is used to show data using bootstrap card in document
 function showFishData(data){
@@ -44,7 +42,7 @@ function showFishData(data){
                 <div class="card-body text-bg-info">
                     <div class="card-text">
                         <h2 class="fs-5">Image Link : <a href="${element["Species Illustration Photo"].src}" target="_blank" rel="noopener noreferrer">${element["Species Illustration Photo"].alt}</a></h2>
-                        <h3 class="fs-5">Location : ${element.Location}</h3>
+                        <h3 class="fs-5">Location : ${element.Quote}</h3>
                         <h3 class="fs-5">Biology : ${element.Biology}</h3>
                         <h3 class="fs-5">Description : ${element["Physical Description"]}</h3>
                         
